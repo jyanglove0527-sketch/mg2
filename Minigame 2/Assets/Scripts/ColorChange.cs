@@ -15,18 +15,19 @@ public class ColorChange : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         // Here, we are going to change the value of 'health',
         // and, as a result, change the color of the prop and the text above the prop.
 
         // STEP 3 -------------------------------------------------------------
         // Write a line of code to subtract ONE from the value of 'health'.
         // You don't need to declare 'health' again - just change the value.
-        
+        health -= 1;
         // STEP 3 -------------------------------------------------------------
 
         // STEP 4 -------------------------------------------------------------
         // DECLARE a new float value named 'r' with a value of 1.
-        
+        float r = 1f;
         // STEP 4 -------------------------------------------------------------
 
         // STEP 5 -------------------------------------------------------------
@@ -37,10 +38,21 @@ public class ColorChange : MonoBehaviour
         if (health == 0)
         {
             gameObject.SetActive(false);
-        }
+        } else if (health == 3)
+{
+    r = 1.0f;
+}
+else if (health == 2)
+{
+    r = 0.5f;
+}
+else if (health == 1)
+{
+    r = 0.0f;
+}
         
         // When you're done, uncomment the line below.
-        //_spriteRenderer.color = new Color(r, 0.2f, 0.2f);
+        _spriteRenderer.color = new Color(r, 0.2f, 0.2f);
         // STEP 5 -------------------------------------------------------------
 
         _healthText.gameObject.SetActive(true);
@@ -48,7 +60,7 @@ public class ColorChange : MonoBehaviour
         // STEP 6 -------------------------------------------------------------
         // Add the value of heatlh to this string, so that the heatlh text
         //      displays the prop's current health value.
-        _healthText.text = "h = ";
+        _healthText.text = "h = " + health;
         // STEP 6 -------------------------------------------------------------
     }
 }
